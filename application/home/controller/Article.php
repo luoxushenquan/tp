@@ -40,6 +40,7 @@ class Article extends Home {
 		return $this->fetch($category['template_lists']);
 	}
 
+
 	/* 文档模型详情页 */
 	public function detail($id = 0, $p = 1){
 		/* 标识正确性检测 */

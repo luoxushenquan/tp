@@ -14,16 +14,6 @@ class Repair extends Home{
 //            $Repair=model('repair');
             $Repair=new \app\admin\model\Repair();
             $post_data=\think\request::instance()->post();
-
-            //验证
-//            $validate = new Validate([
-//                'name'  => 'require|max:25',
-//                'email' => 'email'
-//            ]);
-//
-//            if (!$validate->check($post_data)) {
-//                dump($validate->getError());
-//            }
             $data = $Repair->create($post_data);
             if($data){
                 $this->success('报修成功请等待工人上门解决', url('index'));

@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\phpStudy\WWW\twothink\public/../application/home/view/default/activity\index.html";i:1511939935;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -42,32 +43,23 @@
         </div>
     </nav>
     <!--导航结束-->
-    {block name="header"}
+    <?php $__CATE__ = model('Category')->getChildrenId(42);$__WHERE__ = model('Document')->listMap($__CATE__);$__LIST__ = \think\Db::name('Document')->where($__WHERE__)->field($field)->order('`level` DESC,`id` DESC')->paginate(10);if($__LIST__){ $__LIST__=$__LIST__->toArray(); $__LIST__=$__LIST__['data'];} if(is_array($__LIST__) || $__LIST__ instanceof \think\Collection || $__LIST__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__LIST__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$article): $mod = ($i % 2 );++$i;?>
     <div class="container-fluid">
-        <div class="blank"></div>
-        <h3 class="noticeDetailTitle"><strong>{$info.title}</strong></h3>
-        <div class="noticeDetailInfo">发布者:{$info.uid|get_username}  </div>
-        <div class="noticeDetailInfo">发布时间：{$info.create_time|date='Y-m-d H:i',###}</div>
-        <span class="pull-right">
-					{article:prev name="prev" info="info"}
-                        <a href="{:url('',array('id'=>$prev['id']))}">上一篇</a>
-                    {/article:prev}
-                    {article:next name="next" info="info"}
-                        <a href="{:url('?id='.$next['id'])}">下一篇</a>
-                    {/article:next}
-        <div class="noticeDetailContent">
-            {block name="body"}
-            <div class="span9 main-content">
-                <!-- Contents
-                ================================================== -->
-                <section id="contents">{$info.content}</section>
-                <hr/>
-                {:hook('documentDetailAfter',$info)}
-            </div>
-            {/block}
+        <div class="row noticeList">
+            <a href="notice-detail.html">
+                <div class="col-xs-2">
+                    <img class="img-responsive" src="__ROOT__<?php echo get_cover_path($article['cover_id']); ?>" />
+                </div>
+                <div class="col-xs-10">
+                    <p class="title"><a href="<?php echo url('Article/detail?id='.$article['id']); ?>"><?php echo $article['title']; ?></a></p>
+                    <p class="intro"><a href="<?php echo url('Article/detail?id='.$article['id']); ?>">查看全文</a></p>
+                    <p class="info">浏览: 199 <span class="pull-right"><?php echo date('Y-m-d H:i',$article['create_time']); ?></span> </p>
+                </div>
+            </a>
         </div>
+        <?php endforeach; endif; else: echo "" ;endif; ?>
+
     </div>
-    {/block}
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="../jquery-1.11.2.min.js"></script>

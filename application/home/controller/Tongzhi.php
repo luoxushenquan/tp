@@ -4,7 +4,7 @@
 // +----------------------------------------------------------------------
 // | Copyright (c) 2013 http://www.twothink.cn All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: éº¦å½“è‹—å„¿ <zuojiazi@vip.qq.com> <http://www.zjzit.cn>
+// | Author: Âóµ±Ãç¶ù <zuojiazi@vip.qq.com> <http://www.zjzit.cn>
 // +----------------------------------------------------------------------
 
 namespace app\home\controller;
@@ -12,22 +12,19 @@ use app\home\model\Document;
 use OT\DataDictionary;
 use think\Config;
 /**
- * å‰å°é¦–é¡µæŽ§åˆ¶å™¨
- * ä¸»è¦èŽ·å–é¦–é¡µèšåˆæ•°æ®
+ * Ç°Ì¨Ê×Ò³¿ØÖÆÆ÷
+ * Ö÷Òª»ñÈ¡Ê×Ò³¾ÛºÏÊý¾Ý
  */
-class Index extends Home{
-
-	//ç³»ç»Ÿé¦–é¡µ
-    public function index(){
-//        return 'type='.$id;
+class Tongzhi extends Home{
+    public function index1(){
 
         $category = model('Category')->getTree();
         $document = new Document();
         $lists    = $document->lists(null);
-        $this->assign('category',$category);//æ ç›®
-        $this->assign('lists',$lists);//åˆ—è¡¨
-        $this->assign('page',model('Document')->page);//åˆ†é¡µ
-
-        return $this->fetch('index');
+        $this->assign('category',$category);//À¸Ä¿
+        $this->assign('lists',$lists);//ÁÐ±í
+        $this->assign('page',model('Document')->page);//·ÖÒ³
+        return $this->fetch('index1');
     }
+
 }

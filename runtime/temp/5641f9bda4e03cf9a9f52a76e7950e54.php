@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:81:"D:\phpStudy\WWW\twothink\public/../application/home/view/default/index\index.html";i:1511940306;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -51,7 +52,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-4">
-                        <a href="{:url('tongzhi/index1')}">
+                        <a href="<?php echo url('tongzhi/index1'); ?>">
                             <div class="indexLabel label-danger">
                                 <span class="glyphicon glyphicon-bullhorn"></span><br/>
                                 小区通知
@@ -59,7 +60,7 @@
                         </a>
                     </div>
                     <div class="col-xs-4">
-                        <a href="{:url('bianmin/index','pid='.$pid)}">
+                        <a href="<?php echo url('bianmin/index','pid='.$pid); ?>">
                             <div class="indexLabel label-warning">
                                 <span class="glyphicon glyphicon-ok-circle"></span><br/>
                                 便民服务
@@ -67,7 +68,7 @@
                         </a>
                     </div>
                     <div class="col-xs-4">
-                        <a href="{:url('repair/repair','pid='.$pid)}">
+                        <a href="<?php echo url('repair/repair','pid='.$pid); ?>">
                             <div class="indexLabel label-info">
                                 <span class="glyphicon glyphicon-heart-empty"></span><br/>
                                 在线报修
@@ -75,7 +76,7 @@
                         </a>
                     </div>
                     <div class="col-xs-4">
-                        <a href="{:url('business/index','pid='.$pid)}">
+                        <a href="<?php echo url('business/index','pid='.$pid); ?>">
                             <div class="indexLabel label-success">
                                 <span class="glyphicon glyphicon-briefcase"></span><br/>
                                 商家活动
@@ -83,7 +84,7 @@
                         </a>
                     </div>
                     <div class="col-xs-4">
-                        <a href="{:url('rental/index','pid='.$pid)}">
+                        <a href="<?php echo url('rental/index','pid='.$pid); ?>">
                             <div class="indexLabel label-primary">
                                 <span class="glyphicon glyphicon-usd"></span><br/>
                                 小区租售
@@ -91,7 +92,7 @@
                         </a>
                     </div>
                     <div class="col-xs-4">
-                        <a href="{:url('activity/index','pid='.$pid)}">
+                        <a href="<?php echo url('activity/index','pid='.$pid); ?>">
                             <div class="indexLabel label-default">
                                 <span class="glyphicon glyphicon-apple"></span><br/>
                                 小区活动
@@ -101,26 +102,26 @@
                 </div>
             </div>
         </div>
-        <!--{article:list name="article" category="1" child="true"}-->
+        <!--<?php $__CATE__ = model('Category')->getChildrenId(1);$__WHERE__ = model('Document')->listMap($__CATE__);$__LIST__ = \think\Db::name('Document')->where($__WHERE__)->field($field)->order('`level` DESC,`id` DESC')->paginate(10);if($__LIST__){ $__LIST__=$__LIST__->toArray(); $__LIST__=$__LIST__['data'];} if(is_array($__LIST__) || $__LIST__ instanceof \think\Collection || $__LIST__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__LIST__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$article): $mod = ($i % 2 );++$i;?>-->
         <!--<div class="row">-->
             <!--<div class="span2 pull-left">-->
-                <!--<a href="{:url('Article/detail?id='.$article['id'])}">-->
-                    <!--<img class="img-responsive" src="__ROOT__{$article.cover_id|get_cover_path}" />-->
+                <!--<a href="<?php echo url('Article/detail?id='.$article['id']); ?>">-->
+                    <!--<img class="img-responsive" src="__ROOT__<?php echo get_cover_path($article['cover_id']); ?>" />-->
                 <!--</a>-->
             <!--</div>-->
             <!--<div class="span7">-->
-                <!--<h3><a href="{:url('Article/detail?id='.$article['id'])}">{$article.title}</a></h3>-->
-                <!--<p class="lead">{$article.description}</p>-->
-                <!--<span><a href="{:url('Article/detail?id='.$article['id'])}">查看全文</a></span>-->
+                <!--<h3><a href="<?php echo url('Article/detail?id='.$article['id']); ?>"><?php echo $article['title']; ?></a></h3>-->
+                <!--<p class="lead"><?php echo $article['description']; ?></p>-->
+                <!--<span><a href="<?php echo url('Article/detail?id='.$article['id']); ?>">查看全文</a></span>-->
                       <!--<span class="pull-right">-->
-                          <!--<span class="author">{$article.uid|get_username}</span>-->
-                          <!--<span>于 {$article.create_time|date='Y-m-d H:i',###}</span> 发表在 <span>-->
-                          <!--<a href="{:url('Article/lists?category='.get_category_name($article['category_id']))}">{$article.category_id|get_category_title}</a></span> ( 阅读：{$article.view} )-->
+                          <!--<span class="author"><?php echo get_username($article['uid']); ?></span>-->
+                          <!--<span>于 <?php echo date('Y-m-d H:i',$article['create_time']); ?></span> 发表在 <span>-->
+                          <!--<a href="<?php echo url('Article/lists?category='.get_category_name($article['category_id'])); ?>"><?php echo get_category_title($article['category_id']); ?></a></span> ( 阅读：<?php echo $article['view']; ?> )-->
                       <!--</span>-->
             <!--</div>-->
         <!--</div>-->
         <!--<hr/>-->
-        <!--{/article:list}-->
+        <!--<?php endforeach; endif; else: echo "" ;endif; ?>-->
     </div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

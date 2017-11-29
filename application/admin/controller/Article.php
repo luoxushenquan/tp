@@ -388,6 +388,7 @@ class Article extends Admin {
 
         // 获取当前的模型信息
         $model    =   get_document_model($model_id);
+//        var_dump($model);exit;
 
         //处理结果
         $info['pid']            =   input('pid')?input('pid'):0;

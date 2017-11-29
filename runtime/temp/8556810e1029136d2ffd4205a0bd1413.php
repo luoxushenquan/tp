@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:92:"D:\phpStudy\WWW\twothink\public/../application/home/view/default/article\article\detail.html";i:1511936416;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -42,32 +43,31 @@
         </div>
     </nav>
     <!--导航结束-->
-    {block name="header"}
+    
     <div class="container-fluid">
         <div class="blank"></div>
-        <h3 class="noticeDetailTitle"><strong>{$info.title}</strong></h3>
-        <div class="noticeDetailInfo">发布者:{$info.uid|get_username}  </div>
-        <div class="noticeDetailInfo">发布时间：{$info.create_time|date='Y-m-d H:i',###}</div>
+        <h3 class="noticeDetailTitle"><strong><?php echo $info['title']; ?></strong></h3>
+        <div class="noticeDetailInfo">发布者:<?php echo get_username($info['uid']); ?>  </div>
+        <div class="noticeDetailInfo">发布时间：<?php echo date('Y-m-d H:i',$info['create_time']); ?></div>
         <span class="pull-right">
-					{article:prev name="prev" info="info"}
-                        <a href="{:url('',array('id'=>$prev['id']))}">上一篇</a>
-                    {/article:prev}
-                    {article:next name="next" info="info"}
-                        <a href="{:url('?id='.$next['id'])}">下一篇</a>
-                    {/article:next}
+					<?php $prev = model('Document')->prev($info); if(!(empty($prev) || (($prev instanceof \think\Collection || $prev instanceof \think\Paginator ) && $prev->isEmpty()))): ?>
+                        <a href="<?php echo url('',array('id'=>$prev['id'])); ?>">上一篇</a>
+                    <?php endif; $next = model('Document')->next($info); if(!(empty($next) || (($next instanceof \think\Collection || $next instanceof \think\Paginator ) && $next->isEmpty()))): ?>
+                        <a href="<?php echo url('?id='.$next['id']); ?>">下一篇</a>
+                    <?php endif; ?>
         <div class="noticeDetailContent">
-            {block name="body"}
+            
             <div class="span9 main-content">
                 <!-- Contents
                 ================================================== -->
-                <section id="contents">{$info.content}</section>
+                <section id="contents"><?php echo $info['content']; ?></section>
                 <hr/>
-                {:hook('documentDetailAfter',$info)}
+                <?php echo hook('documentDetailAfter',$info); ?>
             </div>
-            {/block}
+            
         </div>
     </div>
-    {/block}
+    
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="../jquery-1.11.2.min.js"></script>
