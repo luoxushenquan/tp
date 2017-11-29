@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\phpStudy\WWW\twothink\public/../application/home/view/default/tongzhi\index1.html";i:1511939345;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\phpStudy\WWW\twothink\public/../application/home/view/default/tongzhi\index1.html";i:1511946211;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -53,7 +53,7 @@
                 <div class="col-xs-10">
                     <p class="title"><a href="<?php echo url('Article/detail?id='.$article['id']); ?>"><?php echo $article['title']; ?></a></p>
                     <p class="intro"><a href="<?php echo url('Article/detail?id='.$article['id']); ?>">查看全文</a></p>
-                    <p class="info">浏览: 199 <span class="pull-right"><?php echo date('Y-m-d H:i',$article['create_time']); ?></span> </p>
+                    <p class="info">浏览: <?php echo $article['view']; ?><span class="pull-right"><?php echo date('Y-m-d H:i',$article['create_time']); ?></span> </p>
                 </div>
             </a>
         </div>

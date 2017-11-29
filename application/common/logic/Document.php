@@ -47,8 +47,8 @@ class Document extends Base {
 //    }
 
     protected function getDeadlineAttr($value){
-        return data('Y-m-d H:i:s',$value);
-    }
+        return date('Y-m-d H:i:s',$value);
+}
     protected function setUpdateTimeAttr(){
         return time();
     }

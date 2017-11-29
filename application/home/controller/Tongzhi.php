@@ -18,12 +18,12 @@ use think\Config;
 class Tongzhi extends Home{
     public function index1(){
 
-        $category = model('Category')->getTree();
-        $document = new Document();
-        $lists    = $document->lists(null);
-        $this->assign('category',$category);//栏目
-        $this->assign('lists',$lists);//列表
-        $this->assign('page',model('Document')->page);//分页
+//        $category = model('Category')->getTree();
+//        $document = new Document();
+//        $lists    = $document->lists(null);
+//        $this->assign('category',$category);//栏目
+//        $this->assign('lists',$lists);//列表
+//        $this->assign('page',model('Document')->page);//分页
         return $this->fetch('index1');
     }
 
