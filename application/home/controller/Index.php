@@ -30,4 +30,7 @@ class Index extends Home{
 
         return $this->fetch('index');
     }
+    public function pbl(){
+        return $this->fetch('pbl');
+    }
 }

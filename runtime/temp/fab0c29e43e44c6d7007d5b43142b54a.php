@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\phpStudy\WWW\twothink\public/../application/home/view/default/activity\index.html";i:1512038284;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:82:"D:\phpStudy\WWW\twothink\public/../application/home/view/default/fuwu\renzhen.html";i:1512041130;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Bootstrap 101 Template</title>
+    <title>在线报修</title>
 
     <!-- Bootstrap -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -43,28 +43,42 @@
         </div>
     </nav>
     <!--导航结束-->
-    <?php $__CATE__ = model('Category')->getChildrenId(42);$__WHERE__ = model('Document')->listMap($__CATE__);$__LIST__ = \think\Db::name('Document')->where($__WHERE__)->field($field)->order('`level` DESC,`id` DESC')->paginate(10);if($__LIST__){ $__LIST__=$__LIST__->toArray(); $__LIST__=$__LIST__['data'];} if(is_array($__LIST__) || $__LIST__ instanceof \think\Collection || $__LIST__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__LIST__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$article): $mod = ($i % 2 );++$i;?>
-    <div class="container-fluid">
-        <div class="row noticeList">
-            <a href="notice-detail.html">
-                <div class="col-xs-2">
-                    <img class="img-responsive" src="__ROOT__<?php echo get_cover_path($article['cover_id']); ?>" />
-                </div>
-                <div class="col-xs-10">
-                    <p class="title"><a href="<?php echo url('Article/detail?id='.$article['id']); ?>"><?php echo $article['title']; ?></a></p>
-                    <p class="intro"><a href="<?php echo url('Article/detail?id='.$article['id']); ?>">查看全文</a></p>
-                    <p class="intro"><a href="<?php echo url('Activity/baomin?id='.$article['id']); ?>">我要报名</a></p>
-                    <p class="info">浏览: <?php echo $article['view']; ?> <span class="pull-right"><?php echo date('Y-m-d H:i',$article['create_time']); ?></span> </p>
-                </div>
-            </a>
-        </div>
-        <?php endforeach; endif; else: echo "" ;endif; ?>
 
+    <div class="container-fluid">
+        <form class="login-form" action="" method="post">
+            <div class="form-group">
+                <label>您的姓名(必填):</label>
+                <input type="name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>你的房号(必填):</label>
+                <input type="room" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>您与业主的关系(必填):</label>
+                <select class="form-control">
+                    <option value="1">本人</option>
+                    <option value="2">亲属</option>
+                    <option value="3">租户</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>联系电话(必填):</label>
+                <input type="tel" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>身份证号码(必填):</label>
+                <input type="id" class="form-control" />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary onlineBtn">确认提交</button>
+            </div>
+        </form>
     </div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="../jquery-1.11.2.min.js"></script>
+<script src="/jquery-1.11.2.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -42,28 +42,26 @@
         </div>
     </nav>
     <!--导航结束-->
-    {article:list name="article" category="42" child="true"}
-    <div class="container-fluid">
-        <div class="row noticeList">
-            <a href="notice-detail.html">
-                <div class="col-xs-2">
-                    <img class="img-responsive" src="__ROOT__{$article.cover_id|get_cover_path}" />
-                </div>
-                <div class="col-xs-10">
-                    <p class="title"><a href="{:url('Article/detail?id='.$article['id'])}">{$article.title}</a></p>
-                    <p class="intro"><a href="{:url('Article/detail?id='.$article['id'])}">查看全文</a></p>
-                    <p class="intro"><a href="{:url('Activity/baomin?id='.$article['id'])}">我要报名</a></p>
-                    <p class="info">浏览: {$article.view} <span class="pull-right">{$article.create_time|date='Y-m-d H:i',###}</span> </p>
-                </div>
-            </a>
-        </div>
-        {/article:list}
 
+    <div class="container-fluid">
+        <div class="indexImg row">
+            <img src="/image/3.png" width="100%" />
+        </div>
+        <div class="blank"></div>
+        <div class="container">
+            <ul class="list-group fuwuList">
+                <li class="list-group-item"><a href="diaochawenjuan.html" class="text-danger"><span class="iconfont">&#xe604;</span>调查问卷</a> </li>
+                <li class="list-group-item"><a href="{:url('fuwu/renzhen')}" class="text-info"><span class="iconfont">&#xe605;</span>业主认证</a></li>
+                <li class="list-group-item"><a href="#" class="text-success"><span class="iconfont">&#xe602;</span>在线缴费</a></li>
+                <li class="list-group-item"><a href="notice.html" class="text-warning"><span class="iconfont">&#xe601;</span>生活贴士</a></li>
+                <li class="list-group-item"><a href="{:url('business/index')}" class="text-primary"><span class="iconfont">&#xe600;</span>关于我们</a></li>
+            </ul>
+        </div>
     </div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="../jquery-1.11.2.min.js"></script>
+<script src="/jquery-1.11.2.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,7 +1,8 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\phpStudy\WWW\twothink\public/../application/home/view/default/tongzhi\index1.html";i:1511948113;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\phpStudy\WWW\twothink\public/../application/home/view/default/tongzhi\index1.html";i:1512012226;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -65,5 +66,37 @@
 <script src="../jquery-1.11.2.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+<div style="width:964px;height:20px;margin-left:450px;font-size:12px;color:#555;cursor:pointer;font-weight:bold;"
+
+     id="loadWaterFall">点击加载更多</div>
+<script type="text/javascript" src="http://image.studyofnet.com/studyofnet/javascript/jquery-1.4.js"></script>
+<script type="text/javascript">
+    function makeWaterFallItem(data){
+        var li = '<li><div class="fallImg">'
+                + '<a href=""><img src="images/'+data+'.jpg" width="203px"/></a></div>'
+                + '<p class="fallText"><a href="">ffff</a></p>'
+                + '<div class="fallLine"><span></span></div>'
+                + '<div class="fallComment">'
+                + '<p><a href="">摩尔大忽悠:</a> 酷奇卡！</p>'
+                + '<p><a href="">摩尔大忽悠:</a> 酷奇卡！</p>'
+                + '<p><a href="">摩尔大忽悠:</a> 酷奇卡！</p>'
+                + '<p><a href="">摩尔大忽悠:</a> 酷奇卡！</p>'
+                + '</div></li>';
+        return li;
+    }
+    $(document).ready(function(){
+        $("#loadWaterFall").click(function(){
+            for(var j=1;j<=4;j++){
+                var li = "";
+                for(var i=1;i<=4;i++){
+                    var data = "";
+                    li += makeWaterFallItem(i);
+                }
+                $(li).appendTo($("#col_"+j));
+            }
+        });
+    });
+</script>
 </body>
 </html>

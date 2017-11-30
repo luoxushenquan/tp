@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\phpStudy\WWW\twothink\public/../application/home/view/default/activity\index.html";i:1512038284;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"D:\phpStudy\WWW\twothink\public/../application/home/view/default/fuwu\index.html";i:1512038715;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -43,28 +43,26 @@
         </div>
     </nav>
     <!--导航结束-->
-    <?php $__CATE__ = model('Category')->getChildrenId(42);$__WHERE__ = model('Document')->listMap($__CATE__);$__LIST__ = \think\Db::name('Document')->where($__WHERE__)->field($field)->order('`level` DESC,`id` DESC')->paginate(10);if($__LIST__){ $__LIST__=$__LIST__->toArray(); $__LIST__=$__LIST__['data'];} if(is_array($__LIST__) || $__LIST__ instanceof \think\Collection || $__LIST__ instanceof \think\Paginator): $i = 0; $__LIST__ = $__LIST__;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$article): $mod = ($i % 2 );++$i;?>
-    <div class="container-fluid">
-        <div class="row noticeList">
-            <a href="notice-detail.html">
-                <div class="col-xs-2">
-                    <img class="img-responsive" src="__ROOT__<?php echo get_cover_path($article['cover_id']); ?>" />
-                </div>
-                <div class="col-xs-10">
-                    <p class="title"><a href="<?php echo url('Article/detail?id='.$article['id']); ?>"><?php echo $article['title']; ?></a></p>
-                    <p class="intro"><a href="<?php echo url('Article/detail?id='.$article['id']); ?>">查看全文</a></p>
-                    <p class="intro"><a href="<?php echo url('Activity/baomin?id='.$article['id']); ?>">我要报名</a></p>
-                    <p class="info">浏览: <?php echo $article['view']; ?> <span class="pull-right"><?php echo date('Y-m-d H:i',$article['create_time']); ?></span> </p>
-                </div>
-            </a>
-        </div>
-        <?php endforeach; endif; else: echo "" ;endif; ?>
 
+    <div class="container-fluid">
+        <div class="indexImg row">
+            <img src="/image/3.png" width="100%" />
+        </div>
+        <div class="blank"></div>
+        <div class="container">
+            <ul class="list-group fuwuList">
+                <li class="list-group-item"><a href="diaochawenjuan.html" class="text-danger"><span class="iconfont">&#xe604;</span>调查问卷</a> </li>
+                <li class="list-group-item"><a href="<?php echo url('fuwu/renzhen'); ?>" class="text-info"><span class="iconfont">&#xe605;</span>业主认证</a></li>
+                <li class="list-group-item"><a href="#" class="text-success"><span class="iconfont">&#xe602;</span>在线缴费</a></li>
+                <li class="list-group-item"><a href="notice.html" class="text-warning"><span class="iconfont">&#xe601;</span>生活贴士</a></li>
+                <li class="list-group-item"><a href="<?php echo url('business/index'); ?>" class="text-primary"><span class="iconfont">&#xe600;</span>关于我们</a></li>
+            </ul>
+        </div>
     </div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="../jquery-1.11.2.min.js"></script>
+<script src="/jquery-1.11.2.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:82:"D:\phpStudy\WWW\twothink\public/../application/home/view/default/faxian\index.html";i:1512039191;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -28,42 +29,37 @@
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container-fluid text-center">
             <div class="col-xs-3">
-                <p class="navbar-text"><a href="{:url('index/index')}" class="navbar-link">首页</a></p>
+                <p class="navbar-text"><a href="<?php echo url('index/index'); ?>" class="navbar-link">首页</a></p>
             </div>
             <div class="col-xs-3">
-                <p class="navbar-text"><a href="{:url('fuwu/index','pid='.$pid)}" class="navbar-link">服务</a></p>
+                <p class="navbar-text"><a href="<?php echo url('fuwu/index','pid='.$pid); ?>" class="navbar-link">服务</a></p>
             </div>
             <div class="col-xs-3">
-                <p class="navbar-text"><a href="{:url('faxian/index','pid='.$pid)}" class="navbar-link">发现</a></p>
+                <p class="navbar-text"><a href="<?php echo url('faxian/index','pid='.$pid); ?>" class="navbar-link">发现</a></p>
             </div>
             <div class="col-xs-3">
-                <p class="navbar-text"><a href="{:url('my/index','pid='.$pid)}" class="navbar-link">我的</a></p>
+                <p class="navbar-text"><a href="<?php echo url('my/index','pid='.$pid); ?>" class="navbar-link">我的</a></p>
             </div>
         </div>
     </nav>
     <!--导航结束-->
-    {article:list name="article" category="42" child="true"}
-    <div class="container-fluid">
-        <div class="row noticeList">
-            <a href="notice-detail.html">
-                <div class="col-xs-2">
-                    <img class="img-responsive" src="__ROOT__{$article.cover_id|get_cover_path}" />
-                </div>
-                <div class="col-xs-10">
-                    <p class="title"><a href="{:url('Article/detail?id='.$article['id'])}">{$article.title}</a></p>
-                    <p class="intro"><a href="{:url('Article/detail?id='.$article['id'])}">查看全文</a></p>
-                    <p class="intro"><a href="{:url('Activity/baomin?id='.$article['id'])}">我要报名</a></p>
-                    <p class="info">浏览: {$article.view} <span class="pull-right">{$article.create_time|date='Y-m-d H:i',###}</span> </p>
-                </div>
-            </a>
-        </div>
-        {/article:list}
 
+    <div class="container-fluid">
+        <div class="indexImg row">
+            <img src="/image/4.png" width="100%" />
+        </div>
+        <div class="blank"></div>
+        <div class="container">
+            <ul class="list-group fuwuList">
+                <li class="list-group-item"><a href="<?php echo url('activity/index','pid='.$pid); ?>" class="text-danger"><span class="iconfont">&#xe604;</span>商家活动</a> </li>
+
+            </ul>
+        </div>
     </div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="../jquery-1.11.2.min.js"></script>
+<script src="/jquery-1.11.2.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -9,7 +9,8 @@
 namespace app\home\controller;
 class Business extends Home{
     public function index(){
-//        exit;activity
-        return $this->fetch('index');
-    }
+//        return $this->fetch('index');
+        return $this->redirect('Article/detail',$params = ['id'=>158]);
+
+}
 }

@@ -43,7 +43,7 @@ class Login extends Controller {
                     if(!$cookie_url = Cookie::get('__forward__')){
                         $cookie_url = url('Home/Index/index');
                     }
-
+//                    setcookie($username,$uid);//保存登录信息
                     $this->success('登录成功！',$cookie_url);
                 } else {
                     $this->error($Member->getError());

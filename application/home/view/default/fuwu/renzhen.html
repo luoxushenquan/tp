@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Bootstrap 101 Template</title>
+    <title>在线报修</title>
 
     <!-- Bootstrap -->
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -42,28 +42,42 @@
         </div>
     </nav>
     <!--导航结束-->
-    {article:list name="article" category="42" child="true"}
-    <div class="container-fluid">
-        <div class="row noticeList">
-            <a href="notice-detail.html">
-                <div class="col-xs-2">
-                    <img class="img-responsive" src="__ROOT__{$article.cover_id|get_cover_path}" />
-                </div>
-                <div class="col-xs-10">
-                    <p class="title"><a href="{:url('Article/detail?id='.$article['id'])}">{$article.title}</a></p>
-                    <p class="intro"><a href="{:url('Article/detail?id='.$article['id'])}">查看全文</a></p>
-                    <p class="intro"><a href="{:url('Activity/baomin?id='.$article['id'])}">我要报名</a></p>
-                    <p class="info">浏览: {$article.view} <span class="pull-right">{$article.create_time|date='Y-m-d H:i',###}</span> </p>
-                </div>
-            </a>
-        </div>
-        {/article:list}
 
+    <div class="container-fluid">
+        <form class="login-form" action="" method="post">
+            <div class="form-group">
+                <label>您的姓名(必填):</label>
+                <input type="name" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>你的房号(必填):</label>
+                <input type="room" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>您与业主的关系(必填):</label>
+                <select class="form-control">
+                    <option value="1">本人</option>
+                    <option value="2">亲属</option>
+                    <option value="3">租户</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>联系电话(必填):</label>
+                <input type="tel" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>身份证号码(必填):</label>
+                <input type="id" class="form-control" />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary onlineBtn">确认提交</button>
+            </div>
+        </form>
     </div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="../jquery-1.11.2.min.js"></script>
+<script src="/jquery-1.11.2.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
