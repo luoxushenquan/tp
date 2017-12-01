@@ -17,6 +17,6 @@ class Weixin extends Controller{
         $this->redirect($url);
     }
     public function callback(){
-        echo 'clll';
+        echo 'clll';exit;
     }
 }
