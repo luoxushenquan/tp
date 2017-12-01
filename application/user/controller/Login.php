@@ -9,8 +9,11 @@
 
 namespace app\user\controller;
 use app\common\controller\UcApi;
+use app\common\model\UcenterMember;
 use think\Controller;
 use think\Cookie;
+use think\Db;
+use think\Session;
 
 /**
  * 用户登入
@@ -23,8 +26,52 @@ class Login extends Controller {
         config($config); //添加配置
         parent::__construct();
     }
+    ////////
+    public function callback(){
+        $appId='wx3485683f6d24841d';
+        $secret='2cce11808ea62a329b0a38b1ccca275c';
+        $code = request()->get('code');
+        $url="https://api.weixin.qq.com/sns/oauth2/access_token?appid={$appId}&secret={$secret}&code={$code}&grant_type=authorization_code";
+        $str = file_get_contents($url);
+        $json = json_decode($str);
+//        var_dump($json);
+        //保存openidsession
+        Session::set('openid',$json->openid);
+        if(Session::has('return_url')){
+            $this->redirect(Session::get('return_url'));
+        }
+
+    }
+
+
+
     /* 登录页面 */
     public function index($username = '', $password = '', $verify = '',$type = 1){
+
+        //TODO!检查该微信用户是否已绑定账号，如果已绑定，则自动登录
+        //1.1 获取openid
+        //保存当前地址到session
+        Session::set('return_url',url('home/weixin/info'));
+        if(!Session::has('openid')){
+            $appId='wx3485683f6d24841d';
+            $callback=url('home/weixin/callback','',true,true);
+            $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid={$appId}&redirect_uri={$callback}&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect ";
+            $this->redirect($url);
+        }else{
+            $openid=Session::get('openid');
+        }
+//        var_dump($openid);exit;
+        //1.2 根据openid查询用户
+        $uid =Db::table('ucenter_member')->where('openid',$openid)->find();
+//        var_dump($uid);exit;
+        //自动登录的方法
+       $ucm = new UcenterMember();
+         $ucm->autoLogin($uid);
+         $Member = model('Member');
+         if($Member->login($uid)){
+             //登陆成功跳转到登录前页面
+             $this->redirect('/home/index');
+         };
         if($this->request->isPost()){ //登录验证
             /* 检测验证码 */
             if(!captcha_check($verify)){
@@ -44,6 +91,8 @@ class Login extends Controller {
                         $cookie_url = url('Home/Index/index');
                     }
 //                    setcookie($username,$uid);//保存登录信息
+                    //TODO! 绑定账号
+                    //$openid  $Member->openid = $openid;$Member->save();
                     $this->success('登录成功！',$cookie_url);
                 } else {
                     $this->error($Member->getError());

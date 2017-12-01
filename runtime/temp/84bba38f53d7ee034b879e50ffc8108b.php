@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\phpStudy\WWW\twothink\public/../application/home/view/default/my\index.html";i:1512038284;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:78:"D:\phpStudy\WWW\twothink\public/../application/home/view/default/my\index.html";i:1512112623;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -66,8 +66,8 @@
         <div>
             <ul class="list-group fuwuList">
                 <li class="list-group-item"><a href="diaochawenjuan.html" class="text-danger"><span class="iconfont">&#xe60a;</span>我的缴费账单</a> </li>
-                <li class="list-group-item"><a href="yezhurenzheng.html" class="text-info"><span class="iconfont">&#xe608;</span>我的物业通知</a></li>
-                <li class="list-group-item"><a href="yezhurenzheng.html" class="text-info"><span class="iconfont">&#xe607;</span>我的水电气使用</a></li>
+                <li class="list-group-item"><a href="<?php echo url('/user/login/register','pid='.$pid); ?>" class="text-info"><span class="iconfont">&#xe608;</span>我的物业通知</a></li>
+                <li class="list-group-item"><a href="<?php echo url('/user/login/register','pid='.$pid); ?>" class="text-info"><span class="iconfont">&#xe607;</span>注册</a></li>
             </ul>
         </div>
     </div>
