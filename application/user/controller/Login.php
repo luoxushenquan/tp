@@ -64,14 +64,17 @@ class Login extends Controller {
         //1.2 根据openid查询用户
         $uid =Db::table('ucenter_member')->where('openid',$openid)->find();
 //        var_dump($uid);exit;
-        //自动登录的方法
-       $ucm = new UcenterMember();
-         $ucm->autoLogin($uid);
-         $Member = model('Member');
-         if($Member->login($uid)){
-             //登陆成功跳转到登录前页面
-             $this->redirect('/home/index');
-         };
+        //自动登录的方法  有可能错
+        if($uid!=null){
+            $ucm = new UcenterMember();
+            $ucm->autoLogin($uid);
+            $Member = model('Member');
+            if($Member->login($uid)){
+                //登陆成功跳转到登录前页面
+                $this->redirect('/home/index');
+            };
+        }
+
         if($this->request->isPost()){ //登录验证
             /* 检测验证码 */
             if(!captcha_check($verify)){
@@ -92,6 +95,8 @@ class Login extends Controller {
                     }
 //                    setcookie($username,$uid);//保存登录信息
                     //TODO! 绑定账号
+                    $Member->openid = $openid;
+                    $Member->save();
                     //$openid  $Member->openid = $openid;$Member->save();
                     $this->success('登录成功！',$cookie_url);
                 } else {
