@@ -194,7 +194,7 @@ class UcenterMember extends Model{
 		return $this->create($data) ? 1 : $this->getError();
 	}
 	//自动登录方法
-	public function autoLogin($uid){
+	public function autologin($uid){
 		$this->updateLogin($uid);
 	}
 

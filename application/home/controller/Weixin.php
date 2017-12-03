@@ -11,20 +11,20 @@ use think\Session;
 use think\Url;
 
 class Weixin extends Controller{
-    public function info(){
-        //保存当前地址到session
-        Session::set('return_url',url('home/weixin/info'));
-        if(!Session::has('openid')){
-            $appId='wx3485683f6d24841d';
-            $callback=url('home/weixin/callback','',true,true);
-            $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid={$appId}&redirect_uri={$callback}&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect ";
-            $this->redirect($url);
-        }else{
-          $openid=Session::get('openid');
-        }
-        var_dump($openid);
-
-    }
+//    public function info(){
+//        //保存当前地址到session
+//        Session::set('return_url',url('home/weixin/info'));
+//        if(!Session::has('openid')){
+//            $appId='wx3485683f6d24841d';
+//            $callback=url('home/weixin/callback','',true,true);
+//            $url="https://open.weixin.qq.com/connect/oauth2/authorize?appid={$appId}&redirect_uri={$callback}&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect ";
+//            $this->redirect($url);
+//        }else{
+//          $openid=Session::get('openid');
+//        }
+//        var_dump($openid);
+//
+//    }
     public function callback(){
         $appId='wx3485683f6d24841d';
         $secret='2cce11808ea62a329b0a38b1ccca275c';
